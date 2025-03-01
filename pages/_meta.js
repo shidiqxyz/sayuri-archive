@@ -11,4 +11,8 @@ export default {
           typesetting: 'article'
         }
   },
+    ameba: "ameba",
+    hatenablog: "hatenablog",
+    tumblr: "tumblr",
+    "sayuri-yellow": "sayuri-yellow"
   }
