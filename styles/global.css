@@ -1,0 +1,35 @@
+/* Reset dasar */
+html, body, #__next {
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  transition: background 0.5s ease;
+}
+
+/* Light mode → polos hitam */
+:root #__next {
+  background: white !important;
+  color: white;
+}
+
+/* Dark mode → gambar + overlay hitam 90% */
+.dark #__next {
+  background-image: 
+    linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)),
+    url('/bg.jpg') !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-attachment: fixed !important;
+  color: white;
+}
+
+/* Hilangkan background bawaan Nextra di wrapper */
+main,
+.nextra-container,
+.nextra-content {
+  background: transparent !important;
+}
