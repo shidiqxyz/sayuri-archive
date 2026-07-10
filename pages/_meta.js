@@ -1,18 +1,24 @@
 export default {
-    index: {
-        title: "home",
-        theme: {
-            typesetting: 'article'
-          }
+  index: {
+    title: "home",
+    theme: {
+      typesetting: "article",
     },
-    alasan: {
-      title: "alasan membuat sayuri-archive.com? ",
-      theme: {
-          typesetting: 'article'
-        }
   },
-    ameba: "ameba",
-    hatenablog: "hatenablog",
-    tumblr: "tumblr",
-    "sayuri-yellow": "sayuri-yellow"
-  }
+  alasan: {
+    title: "alasan membuat sayuri-archive.com? ",
+    theme: {
+      typesetting: "article",
+    },
+  },
+  fanart: {
+    title: "fanart",
+    theme: {
+      typesetting: "article",
+    },
+  },
+  ameba: "ameba",
+  hatenablog: "hatenablog",
+  tumblr: "tumblr",
+  "sayuri-yellow": "sayuri-yellow",
+};
