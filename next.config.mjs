@@ -1,11 +1,17 @@
-import nextra from 'nextra'
- 
-const withNextra = nextra({
-  theme: 'nextra-theme-docs',
-  themeConfig: './theme.config.jsx'
+import createMDX from '@next/mdx'
+import remarkGfm from 'remark-gfm'
+
+const withMDX = createMDX({
+  extension: /\.mdx?$/,
+  options: {
+    remarkPlugins: [remarkGfm],
+    rehypePlugins: [],
+  },
 })
- 
-export default withNextra()
- 
-// If you have other Next.js configurations, you can pass them as the parameter:
-// export default withNextra({ /* other next.js config */ })
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+}
+
+export default withMDX(nextConfig)
