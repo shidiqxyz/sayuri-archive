@@ -11,8 +11,8 @@
   --mem-accent: #eab308;      /* vivid yellow */
   --mem-accent-soft: #fef3c7; /* pale yellow */
   --mem-border: #e5dccd;      /* hairline borders */
-  --mem-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
-  --mem-sans: 'Lora', Georgia, serif;
+  --mem-serif: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
+  --mem-sans: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
 }
 
 /* ---------- Base ---------- */
@@ -47,8 +47,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: rgba(250, 247, 242, 0.92);
-  backdrop-filter: blur(8px);
+  background: var(--mem-bg);
   border-bottom: 1px solid var(--mem-border);
 }
 
@@ -159,7 +158,7 @@ body {
   color: var(--mem-text-soft);
   text-decoration: none;
   padding: 0.4rem 0.7rem;
-  border-radius: 999px;
+  border-radius: 4px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
@@ -190,7 +189,7 @@ body {
   font-weight: 500;
   color: var(--mem-text-soft);
   padding: 0.4rem 0.7rem;
-  border-radius: 999px;
+  border-radius: 4px;
   transition: color 0.2s ease, background 0.2s ease;
 }
 
@@ -349,7 +348,7 @@ body {
 .mem-article img {
   max-width: 100%;
   height: auto;
-  border-radius: 10px;
+  border-radius: 3px;
   margin: 1rem 0;
 }
 
@@ -368,7 +367,7 @@ body {
 
 .mem-article pre {
   background: var(--mem-bg-soft);
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 1rem;
   overflow-x: auto;
 }
@@ -387,7 +386,7 @@ body {
 
 .mem-article iframe {
   max-width: 100%;
-  border-radius: 10px;
+  border-radius: 3px;
 }
 
 .mem-footer {
@@ -424,7 +423,7 @@ body {
   gap: 0.2rem;
   padding: 1rem 1.2rem;
   border: 1px solid var(--mem-border);
-  border-radius: 12px;
+  border-radius: 3px;
   background: #fff;
   text-decoration: none;
   color: var(--mem-text);
@@ -477,7 +476,7 @@ body {
 
 /* ---------- Dark mode: custom layout ---------- */
 .dark .mem-header {
-  background: rgba(23, 19, 16, 0.92);
+  background: #171310;
   border-bottom-color: #332b23;
 }
 
@@ -530,11 +529,10 @@ body {
   color: #a89c8e;
 }
 
-/* ---------- Scroll reveal ---------- */
+/* ---------- Scroll reveal (subtle fade only) ---------- */
 .mem-reveal {
   opacity: 0;
-  transform: translateY(16px);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+  transition: opacity 0.4s ease;
 }
 
 .mem-reveal.is-visible {
@@ -572,7 +570,7 @@ body {
   font-size: 0.95rem;
   font-weight: 600;
   padding: 0.7rem 1.4rem;
-  border-radius: 999px;
+  border-radius: 3px;
   text-decoration: none;
   cursor: pointer;
   border: 1px solid transparent;
@@ -593,18 +591,19 @@ body {
   background: #ca8a04;
 }
 
-/* Hero button: brighter yellow, larger */
-.mem-hero__cta .mem-btn {
-  background: #facc15;
-  color: #2b2622;
-  font-size: 1.1rem;
-  font-weight: 700;
-  padding: 0.9rem 2.2rem;
-  border-radius: 999px;
+/* Hero link: quiet text link instead of a pill button */
+.mem-hero__link {
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 6px;
+  text-decoration-color: rgba(255, 255, 255, 0.55);
 }
 
-.mem-hero__cta .mem-btn:hover {
-  background: #fde047;
+.mem-hero__link:hover {
+  text-decoration-color: #facc15;
 }
 
 .mem-btn--ghost {
@@ -621,10 +620,11 @@ body {
 .mem-hero {
   position: relative;
   min-height: 100vh;
+  min-height: 100svh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-end;
   overflow: hidden;
   color: #fff;
 }
@@ -637,34 +637,37 @@ body {
 .mem-hero__overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(
-    to bottom,
-    rgba(20, 16, 12, 0.2) 0%,
-    rgba(20, 16, 12, 0.12) 50%,
-    rgba(20, 16, 12, 0.35) 100%
-  );
+  background: rgba(20, 16, 12, 0.45);
 }
 
 .mem-hero__content {
   position: relative;
   z-index: 1;
-  text-align: center;
-  padding: 4rem 1.5rem;
-  max-width: 46rem;
+  text-align: left;
+  padding: 3rem 1.5rem 6rem;
+  max-width: 72rem;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mem-hero__eyebrow,
+.mem-hero__name,
+.mem-hero__dates,
+.mem-hero__cta {
+  max-width: 40rem;
 }
 
 .mem-hero__eyebrow {
   font-family: var(--mem-sans);
-  text-transform: uppercase;
-  letter-spacing: 0.35em;
-  font-size: 0.8rem;
-  opacity: 0.85;
-  margin: 0 0 1rem;
+  letter-spacing: 0.08em;
+  font-size: 0.85rem;
+  opacity: 0.8;
+  margin: 0 0 0.8rem;
 }
 
 .mem-hero__name {
   font-family: var(--mem-serif);
-  font-size: clamp(3rem, 10vw, 6rem);
+  font-size: clamp(3.5rem, 12vw, 7.5rem);
   font-weight: 600;
   line-height: 1.05;
   margin: 0;
@@ -672,19 +675,18 @@ body {
 
 .mem-hero__name-en {
   display: block;
-  font-size: 0.55em;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  opacity: 0.9;
+  font-size: 0.5em;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
   margin-top: 0.4rem;
 }
 
 .mem-hero__dates {
   font-family: var(--mem-serif);
-  font-size: 1.4rem;
-  letter-spacing: 0.15em;
-  opacity: 0.9;
-  margin: 1.2rem 0 0;
+  font-size: 1.25rem;
+  letter-spacing: 0.06em;
+  opacity: 0.85;
+  margin: 1rem 0 0;
 }
 
 .mem-hero__tribute {
@@ -696,33 +698,7 @@ body {
 }
 
 .mem-hero__cta {
-  display: flex;
-  gap: 0.9rem;
-  justify-content: center;
-  flex-wrap: wrap;
-  margin-top: 2.2rem;
-}
-
-.mem-hero__scroll {
-  position: absolute;
-  bottom: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-.mem-hero__scroll-dot {
-  display: block;
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #fff;
-  animation: mem-bounce 1.8s infinite;
-}
-
-@keyframes mem-bounce {
-  0%, 100% { transform: translateY(0); opacity: 1; }
-  50% { transform: translateY(10px); opacity: 0.4; }
+  margin-top: 1.8rem;
 }
 
 /* ---------- Archive cards ---------- */
@@ -747,36 +723,6 @@ body {
   margin-top: 2rem;
 }
 
-.mem-card {
-  display: block;
-  background: #fff;
-  border: 1px solid var(--mem-border);
-  border-radius: 12px;
-  padding: 1.4rem 1.4rem 1.2rem;
-  text-decoration: none;
-  color: var(--mem-text);
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
-}
-
-.mem-card:hover {
-  border-color: var(--mem-accent);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(43, 38, 34, 0.08);
-}
-
-.mem-card__title {
-  font-family: var(--mem-serif);
-  font-size: 1.35rem;
-  font-weight: 600;
-  margin: 0 0 0.3rem;
-}
-
-.mem-card__desc {
-  font-size: 0.85rem;
-  color: var(--mem-text-soft);
-  margin: 0;
-}
-
 /* ---------- Fanart gallery ---------- */
 .mem-fanart {
   max-width: 72rem;
@@ -795,15 +741,13 @@ body {
   margin: 0;
   background: #fff;
   border: 1px solid var(--mem-border);
-  border-radius: 12px;
+  border-radius: 3px;
   overflow: hidden;
-  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .mem-fanart__card:hover {
   border-color: var(--mem-accent);
-  transform: translateY(-3px);
-  box-shadow: 0 12px 28px rgba(43, 38, 34, 0.1);
 }
 
 .mem-fanart__img {
@@ -916,7 +860,7 @@ body {
 
 /* ---------- Archive page (standalone) ---------- */
 .mem-archive-page {
-  max-width: 84rem;
+  max-width: 60rem;
   margin: 0 auto;
   padding: 3rem 1.5rem 5rem;
 }
@@ -945,63 +889,55 @@ body {
 }
 
 .mem-archives__group-label {
-  display: flex;
-  align-items: center;
-  gap: 0.8rem;
-  font-family: var(--mem-serif);
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: var(--mem-text);
-  margin: 0 0 1.2rem;
-}
-
-.mem-archives__group-line {
-  display: inline-block;
-  width: 2.2rem;
-  height: 2px;
-  background: var(--mem-accent);
-  border-radius: 2px;
+  font-family: var(--mem-sans);
+  font-size: 0.85rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--mem-text-soft);
+  margin: 0 0 0.2rem;
 }
 
 .mem-archives__grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  gap: 0.8rem;
+  display: block;
+  border-top: 1px solid var(--mem-border);
 }
 
 .mem-card {
-  display: block;
-  background: #fff;
-  border: 1px solid var(--mem-border);
-  border-radius: 12px;
-  padding: 1.4rem 1.5rem;
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.85rem 0.2rem;
+  border-bottom: 1px solid var(--mem-border);
   text-decoration: none;
   color: var(--mem-text);
-  box-shadow: 0 2px 6px rgba(43, 38, 34, 0.06);
-  transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease,
-    transform 0.2s ease;
-}
-
-.mem-card:hover {
-  border-color: var(--mem-accent);
-  background: var(--mem-accent-soft);
-  box-shadow: 0 6px 16px rgba(43, 38, 34, 0.1);
-  transform: translateY(-2px);
 }
 
 .mem-card__title {
   display: block;
   font-family: var(--mem-serif);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 600;
   margin: 0;
+  transition: color 0.15s ease;
 }
 
-.mem-card__desc {
-  display: block;
-  font-size: 0.85rem;
+.mem-card:hover .mem-card__title {
+  color: var(--mem-accent);
+}
+
+.mem-card__arrow {
+  flex-shrink: 0;
+  align-self: center;
+  font-weight: 700;
+  font-size: 1.1rem;
   color: var(--mem-text-soft);
-  margin: 0;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.mem-card:hover .mem-card__arrow {
+  transform: translateX(4px);
+  color: var(--mem-accent);
 }
 
 .dark .mem-archive-page__eyebrow {
@@ -1017,18 +953,12 @@ body {
 }
 
 .dark .mem-card {
-  background: #221c17;
-  border-color: #44382c;
+  background: transparent;
+  border-bottom-color: #44382c;
   color: #f3ede3;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
 }
 
-.dark .mem-card:hover {
-  border-color: var(--mem-accent);
-  background: #2a231d;
-}
-
-.dark .mem-card__desc {
+.dark .mem-card__arrow {
   color: #a89c8e;
 }
 
@@ -1071,7 +1001,7 @@ body {
   width: 18px;
   height: 64px;
   border-radius: 4px 4px 3px 3px;
-  background: linear-gradient(to bottom, #f5e6c8, #e8d3a8);
+  background: #f5e6c8;
   border: 1px solid #dcc48f;
 }
 
@@ -1081,16 +1011,7 @@ body {
   width: 12px;
   height: 20px;
   border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
-  background: radial-gradient(circle at 50% 70%, #fff7d6, #ffd166 55%, #ff9f1c);
-  box-shadow: 0 0 14px 4px rgba(255, 180, 60, 0.55);
-  animation: mem-flicker 0.9s ease-in-out infinite;
-  transform-origin: bottom center;
-}
-
-@keyframes mem-flicker {
-  0%, 100% { transform: scale(1) rotate(-1deg); }
-  30% { transform: scale(1.08, 0.95) rotate(1.5deg); }
-  60% { transform: scale(0.95, 1.05) rotate(-1deg); }
+  background: #ffd166;
 }
 
 .mem-candle__name {
@@ -1118,7 +1039,7 @@ body {
   font-size: 0.95rem;
   padding: 0.7rem 1rem;
   border: 1px solid var(--mem-border);
-  border-radius: 999px;
+  border-radius: 3px;
   background: #fff;
   color: var(--mem-text);
   min-width: 220px;
@@ -1146,16 +1067,12 @@ body {
 }
 
 .dark .mem-card {
-  background: #221c17;
-  border-color: #332b23;
+  background: transparent;
+  border-bottom-color: #332b23;
   color: #f3ede3;
 }
 
-.dark .mem-card:hover {
-  border-color: var(--mem-accent);
-}
-
-.dark .mem-card__desc {
+.dark .mem-card__arrow {
   color: #a89c8e;
 }
 
@@ -1267,15 +1184,14 @@ body {
   padding: 0.9rem 1.1rem;
   background: #fff;
   border: 1px solid var(--mem-border);
-  border-radius: 10px;
+  border-radius: 3px;
   text-decoration: none;
   color: var(--mem-text);
-  transition: border-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.2s ease;
 }
 
 .mem-discography__item:hover {
   border-color: var(--mem-accent);
-  transform: translateY(-2px);
 }
 
 .mem-discography__title {
@@ -1313,7 +1229,7 @@ body {
 .mem-guestbook__placeholder {
   padding: 2rem;
   border: 1px dashed var(--mem-border);
-  border-radius: 12px;
+  border-radius: 4px;
   color: var(--mem-text-soft);
   text-align: center;
 }

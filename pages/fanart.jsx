@@ -57,8 +57,8 @@ export default function Fanart() {
       </Reveal>
 
       <div className="mem-fanart__grid">
-        {FANARTS.map((art, i) => (
-          <Reveal key={art.src} delay={i * 60}>
+          {FANARTS.map((art) => (
+          <Reveal key={art.src}>
             <figure className="mem-fanart__card">
               <button
                 type="button"

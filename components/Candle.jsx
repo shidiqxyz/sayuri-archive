@@ -37,7 +37,7 @@ export default function Candle() {
           </p>
         </Reveal>
 
-        <Reveal delay={150}>
+        <Reveal>
           <div className="mem-candle__row" aria-label="Lit candles">
             {Array.from({ length: MAX_CANDLES }).map((_, i) => {
               const candle = candles[i]
@@ -60,7 +60,7 @@ export default function Candle() {
           </div>
         </Reveal>
 
-        <Reveal delay={250}>
+        <Reveal>
           <form className="mem-candle__form" onSubmit={lightCandle}>
             <input
               className="mem-input"

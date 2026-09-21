@@ -6,21 +6,6 @@ import Link from 'next/link'
 import { MDXProvider } from '@mdx-js/react'
 import MdxLayout from '../components/MdxLayout'
 import HeadManager from '../components/HeadManager'
-import { Playfair_Display, Lora } from 'next/font/google'
-
-const playfair = Playfair_Display({
-  subsets: ['latin'],
-  weight: ['500', '600', '700'],
-  variable: '--mem-serif',
-  display: 'swap',
-})
-
-const lora = Lora({
-  subsets: ['latin'],
-  weight: ['400', '500', '600'],
-  variable: '--mem-sans',
-  display: 'swap',
-})
 
 const components = {
   a: (props) => {
@@ -64,7 +49,7 @@ export default function App({ Component, pageProps }) {
           `,
         }}
       />
-      <div className={`${playfair.variable} ${lora.variable}`}>
+      <div>
         <MDXProvider components={components}>
           <MdxLayout>
             <Component {...pageProps} />
