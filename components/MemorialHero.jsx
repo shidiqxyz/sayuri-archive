@@ -4,7 +4,7 @@ export default function MemorialHero() {
   return (
     <section className="mem-hero">
       <Image
-        src="/bg.jpg"
+        src="https://s3ll5qqkgio8hxqg.public.blob.vercel-storage.com/bg.jpg"
         alt=""
         fill
         priority

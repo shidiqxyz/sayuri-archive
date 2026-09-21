@@ -12,6 +12,11 @@ const withMDX = createMDX({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   pageExtensions: ['js', 'jsx', 'md', 'mdx'],
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: '*.public.blob.vercel-storage.com' },
+    ],
+  },
   async redirects() {
     return [
       // /archive merged into home

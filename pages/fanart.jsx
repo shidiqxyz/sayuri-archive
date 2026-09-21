@@ -3,27 +3,27 @@ import Reveal from '../components/Reveal'
 
 const FANARTS = [
   {
-    src: '/fanart/1.jpeg',
+    src: 'https://s3ll5qqkgio8hxqg.public.blob.vercel-storage.com/fanart/1.jpeg',
     artist: 'farizmv_',
     link: 'https://www.instagram.com/farizmv_/',
   },
   {
-    src: '/fanart/2.jpg',
+    src: 'https://s3ll5qqkgio8hxqg.public.blob.vercel-storage.com/fanart/2.jpg',
     artist: 'dilz_arts',
     link: 'https://www.instagram.com/dilz_arts/',
   },
   {
-    src: '/fanart/3.png',
+    src: 'https://s3ll5qqkgio8hxqg.public.blob.vercel-storage.com/fanart/3.png',
     artist: '620_aa0',
     link: 'https://www.instagram.com/620_aa0/',
   },
   {
-    src: '/fanart/4.png',
+    src: 'https://s3ll5qqkgio8hxqg.public.blob.vercel-storage.com/fanart/4.png',
     artist: 'Chintya Loei',
     link: 'https://web.facebook.com/chintyaloei#',
   },
   {
-    src: '/fanart/5.png',
+    src: 'https://s3ll5qqkgio8hxqg.public.blob.vercel-storage.com/fanart/5.png',
     artist: 'KID',
     link: 'https://www.instagram.com/kkid.___',
   },
