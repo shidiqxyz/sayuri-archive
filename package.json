@@ -2,10 +2,10 @@
   "dependencies": {
     "@mdx-js/loader": "^3.1.0",
     "@mdx-js/react": "^3.1.0",
-    "@next/mdx": "15.1.11",
+    "@next/mdx": "^15.5.24",
     "@vercel/blob": "^2.8.0",
     "disqus-react": "^1.1.5",
-    "next": "15.1.11",
+    "next": "^15.5.24",
     "prop-types": "^15.8.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
