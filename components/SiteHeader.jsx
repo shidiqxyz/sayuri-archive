@@ -111,9 +111,11 @@ export default function SiteHeader({ revealOnScroll = false }) {
     return () => window.removeEventListener('scroll', onScroll)
   }, [revealOnScroll])
 
-  const className = revealOnScroll
-    ? `mem-header mem-header--reveal${visible ? ' is-visible' : ''}`
-    : 'mem-header'
+  const headerClass = 'mem-header'
+  const wrapClass =
+    revealOnScroll === true
+      ? `mem-header-wrap--reveal${visible ? ' is-visible' : ''}`
+      : undefined
 
   return (
     <>
@@ -122,7 +124,8 @@ export default function SiteHeader({ revealOnScroll = false }) {
           <ThemeToggle />
         </div>
       )}
-      <header className={className}>
+      <div className={wrapClass}>
+        <header className={headerClass}>
       <div className="mem-header__inner">
         <Link href="/" className="mem-header__brand">
           sayuri-archive
@@ -137,6 +140,7 @@ export default function SiteHeader({ revealOnScroll = false }) {
         </div>
       </div>
       </header>
+    </div>
     </>
   )
 }

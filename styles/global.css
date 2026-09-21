@@ -11,6 +11,9 @@
   --mem-accent: #eab308;      /* vivid yellow */
   --mem-accent-soft: #fef3c7; /* pale yellow */
   --mem-border: #e5dccd;      /* hairline borders */
+  /* Shared layout metrics: header, hero and archive content align by construction */
+  --mem-maxw: 72rem;
+  --mem-gutter: 1.5rem;
   --mem-serif: 'Shippori Mincho B1', 'Hiragino Mincho ProN', 'Yu Mincho', serif;
   --mem-sans: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
 }
@@ -73,9 +76,9 @@ body {
 }
 
 .mem-header__inner {
-  max-width: 72rem;
+  max-width: var(--mem-maxw);
   margin: 0 auto;
-  padding: 0.9rem 1.5rem;
+  padding: 0.9rem var(--mem-gutter);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -83,22 +86,30 @@ body {
   flex-wrap: wrap;
 }
 
-/* Reveal-on-scroll header (home): hidden over the hero, slides in on scroll */
-.mem-header--reveal {
-  position: fixed;
+/* Reveal-on-scroll header (home): zero-height sticky wrapper keeps the
+   header in normal flow (identical centering to content in every
+   environment), the bar itself slides down on scroll */
+.mem-header-wrap--reveal {
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
+  height: 0;
+  z-index: 50;
+}
+
+.mem-header-wrap--reveal .mem-header {
+  visibility: hidden;
   transform: translateY(-100%);
+  transition: transform 0.3s ease, visibility 0s linear 0.3s;
+}
+
+.mem-header-wrap--reveal.is-visible .mem-header {
+  visibility: visible;
+  transform: none;
   transition: transform 0.3s ease;
 }
 
-.mem-header--reveal.is-visible {
-  transform: none;
-}
-
 @media (prefers-reduced-motion: reduce) {
-  .mem-header--reveal {
+  .mem-header-wrap--reveal .mem-header {
     transition: none;
   }
 }
@@ -685,8 +696,8 @@ body {
   position: relative;
   z-index: 1;
   text-align: left;
-  padding: 3rem 1.5rem 6rem;
-  max-width: 72rem;
+  padding: 3rem var(--mem-gutter) 6rem;
+  max-width: var(--mem-maxw);
   width: 100%;
   margin: 0 auto;
 }
@@ -754,12 +765,12 @@ body {
   justify-content: center;
   background: var(--mem-bg);
   color: var(--mem-text);
-  padding: 4.5rem 1.5rem;
+  padding: 4.5rem var(--mem-gutter);
   scroll-margin-top: 3rem;
 }
 
 .mem-archives__inner {
-  max-width: 72rem;
+  max-width: var(--mem-maxw);
   width: 100%;
   margin: 0 auto;
 }
