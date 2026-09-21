@@ -1,13 +1,13 @@
 import MemorialHero from '../components/MemorialHero'
-import ThemeToggle from '../components/ThemeToggle'
+import SiteHeader from '../components/SiteHeader'
+import ArchiveIndex from '../components/ArchiveIndex'
 
 export default function Home() {
   return (
     <>
-      <div className="mem-home-toggle">
-        <ThemeToggle />
-      </div>
       <MemorialHero />
+      <SiteHeader revealOnScroll />
+      <ArchiveIndex />
     </>
   )
 }

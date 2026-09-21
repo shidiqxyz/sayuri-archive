@@ -8,7 +8,6 @@ const BASE_URL = 'https://sayuri-archive.com'
 // Static page titles for top-level routes
 const STATIC_TITLES = {
   '/': 'sayuri-archive — In loving memory of Sayuri',
-  '/archive': 'Archive — sayuri-archive',
   '/timeline': 'Timeline — sayuri-archive',
   '/discography': 'Discography — sayuri-archive',
   '/guestbook': 'Guestbook — sayuri-archive',

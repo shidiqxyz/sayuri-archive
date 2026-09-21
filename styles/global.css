@@ -15,7 +15,28 @@
   --mem-sans: 'Zen Kaku Gothic New', 'Hiragino Kaku Gothic ProN', sans-serif;
 }
 
+/* Dark palette: softer amber, translucent fills instead of pale washes */
+.dark {
+  --mem-accent: #f2b705;
+  --mem-accent-soft: rgba(242, 183, 5, 0.14);
+}
+
+.dark .mem-article a:hover,
+.dark .mem-fanart__artist:hover {
+  color: var(--mem-accent);
+}
+
+.dark .mem-btn--primary:hover {
+  background: var(--mem-accent);
+}
+
 /* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -62,6 +83,26 @@ body {
   flex-wrap: wrap;
 }
 
+/* Reveal-on-scroll header (home): hidden over the hero, slides in on scroll */
+.mem-header--reveal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  transform: translateY(-100%);
+  transition: transform 0.3s ease;
+}
+
+.mem-header--reveal.is-visible {
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mem-header--reveal {
+    transition: none;
+  }
+}
+
 /* Theme toggle */
 .mem-theme-toggle {
   display: inline-flex;
@@ -83,9 +124,9 @@ body {
 }
 
 .dark .mem-theme-toggle {
-  background: #221c17;
-  border-color: #332b23;
-  color: #f3ede3;
+  background: #201b18;
+  border-color: #2e2824;
+  color: #ece4d2;
 }
 
 .dark .mem-theme-toggle:hover {
@@ -262,22 +303,22 @@ body {
 }
 
 .dark .mem-nav__toggle {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-nav__toggle:hover {
-  color: #f3ede3;
-  background: #221c17;
+  color: #ece4d2;
+  background: #201b18;
 }
 
 .dark .mem-nav__toggle.is-active {
   color: var(--mem-accent);
-  background: #332b23;
+  background: #2e2824;
 }
 
 .dark .mem-nav__menu-inner {
-  background: #221c17;
-  border-color: #332b23;
+  background: #201b18;
+  border-color: #2e2824;
 }
 
 .dark .mem-nav__menu-link {
@@ -291,7 +332,7 @@ body {
 
 .dark .mem-nav__menu-link.is-active {
   color: var(--mem-accent);
-  background: #332b23;
+  background: #2e2824;
 }
 
 .mem-main {
@@ -460,9 +501,9 @@ body {
 }
 
 .dark .mem-prevnext__btn {
-  background: #221c17;
-  border-color: #332b23;
-  color: #f3ede3;
+  background: #201b18;
+  border-color: #2e2824;
+  color: #ece4d2;
 }
 
 .dark .mem-prevnext__btn:hover {
@@ -471,31 +512,31 @@ body {
 }
 
 .dark .mem-prevnext__label {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 /* ---------- Dark mode: custom layout ---------- */
 .dark .mem-header {
-  background: #171310;
-  border-bottom-color: #332b23;
+  background: #141110;
+  border-bottom-color: #2e2824;
 }
 
 .dark .mem-header__brand {
-  color: #f3ede3;
+  color: #ece4d2;
 }
 
 .dark .mem-nav__link {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-nav__link:hover {
-  color: #f3ede3;
-  background: #221c17;
+  color: #ece4d2;
+  background: #201b18;
 }
 
 .dark .mem-nav__link.is-active {
   color: var(--mem-accent);
-  background: #332b23;
+  background: #2e2824;
 }
 
 .dark .mem-article {
@@ -505,28 +546,28 @@ body {
 .dark .mem-article h1,
 .dark .mem-article h2,
 .dark .mem-article h3 {
-  color: #f3ede3;
+  color: #ece4d2;
 }
 
 .dark .mem-article code {
-  background: #221c17;
+  background: #201b18;
 }
 
 .dark .mem-article pre {
-  background: #221c17;
+  background: #201b18;
 }
 
 .dark .mem-article blockquote {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-footer {
-  border-top-color: #332b23;
-  background: #1e1915;
+  border-top-color: #2e2824;
+  background: #1c1816;
 }
 
 .dark .mem-footer__text {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 /* ---------- Scroll reveal (subtle fade only) ---------- */
@@ -701,18 +742,25 @@ body {
   margin-top: 1.8rem;
 }
 
-/* ---------- Archive cards ---------- */
+/* ---------- Archive index (home section) ---------- */
 .mem-archives {
   position: relative;
   z-index: 1;
   width: 100%;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   background: var(--mem-bg);
   color: var(--mem-text);
   padding: 4.5rem 1.5rem;
+  scroll-margin-top: 3rem;
 }
 
 .mem-archives__inner {
   max-width: 72rem;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -779,8 +827,8 @@ body {
 }
 
 .dark .mem-fanart__card {
-  background: #221c17;
-  border-color: #332b23;
+  background: #201b18;
+  border-color: #2e2824;
 }
 
 .dark .mem-fanart__card:hover {
@@ -788,11 +836,11 @@ body {
 }
 
 .dark .mem-fanart__caption {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-fanart__label {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 /* Lightbox */
@@ -858,25 +906,7 @@ body {
   to { opacity: 1; }
 }
 
-/* ---------- Archive page (standalone) ---------- */
-.mem-archive-page {
-  max-width: 60rem;
-  margin: 0 auto;
-  padding: 3rem 1.5rem 5rem;
-}
-
-.mem-archive-page__header {
-  margin-bottom: 3rem;
-}
-
-.mem-archive-page__eyebrow {
-  font-size: 0.8rem;
-  text-transform: uppercase;
-  letter-spacing: 0.3em;
-  color: var(--mem-accent);
-  margin: 0 0 0.6rem;
-}
-
+/* ---------- Archive index ---------- */
 .mem-section-sub {
   color: var(--mem-text-soft);
   margin: 0.5rem 0 0;
@@ -940,26 +970,22 @@ body {
   color: var(--mem-accent);
 }
 
-.dark .mem-archive-page__eyebrow {
-  color: var(--mem-accent);
-}
-
 .dark .mem-section-sub {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-archives__group-label {
-  color: #f3ede3;
+  color: #ece4d2;
 }
 
 .dark .mem-card {
   background: transparent;
-  border-bottom-color: #44382c;
-  color: #f3ede3;
+  border-bottom-color: #2e2824;
+  color: #ece4d2;
 }
 
 .dark .mem-card__arrow {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 /* ---------- Candle section ---------- */
@@ -1053,45 +1079,45 @@ body {
 
 /* ---------- Dark mode ---------- */
 .dark body {
-  background: #171310;
-  color: #f3ede3;
+  background: #141110;
+  color: #ece4d2;
 }
 
 .dark .mem-archives {
-  background: #171310;
-  color: #f3ede3;
+  background: #141110;
+  color: #ece4d2;
 }
 
 .dark .mem-candle {
-  background: #1e1915;
+  background: #1c1816;
 }
 
 .dark .mem-card {
   background: transparent;
-  border-bottom-color: #332b23;
-  color: #f3ede3;
+  border-bottom-color: #2e2824;
+  color: #ece4d2;
 }
 
 .dark .mem-card__arrow {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-section-title {
-  color: #f3ede3;
+  color: #ece4d2;
 }
 
 .dark .mem-candle__intro {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-candle__name {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-input {
-  background: #221c17;
-  border-color: #332b23;
-  color: #f3ede3;
+  background: #201b18;
+  border-color: #2e2824;
+  color: #ece4d2;
 }
 
 /* ---------- Timeline ---------- */
@@ -1218,7 +1244,7 @@ body {
 }
 
 .dark .mem-discography__note {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 /* ---------- Guestbook ---------- */
@@ -1245,17 +1271,17 @@ body {
 
 /* ---------- Dark mode additions ---------- */
 .dark .mem-timeline {
-  border-left-color: #332b23;
+  border-left-color: #2e2824;
 }
 
 .dark .mem-timeline__desc {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-discography__item {
-  background: #221c17;
-  border-color: #332b23;
-  color: #f3ede3;
+  background: #201b18;
+  border-color: #2e2824;
+  color: #ece4d2;
 }
 
 .dark .mem-discography__item:hover {
@@ -1263,16 +1289,16 @@ body {
 }
 
 .dark .mem-discography__year {
-  color: #a89c8e;
+  color: #ada091;
 }
 
 .dark .mem-guestbook__placeholder {
-  border-color: #332b23;
-  color: #a89c8e;
+  border-color: #2e2824;
+  color: #ada091;
 }
 
 .dark .mem-guestbook__placeholder code {
-  background: #221c17;
+  background: #201b18;
 }
 
 /* ---------- Nextra archive pages: restyle to match ---------- */
@@ -1384,7 +1410,7 @@ body {
 .dark .nextra-content h2,
 .dark .nextra-content h3,
 .dark .nextra-content h4 {
-  color: #f3ede3;
+  color: #ece4d2;
 }
 
 .dark .nextra-content {
@@ -1392,8 +1418,8 @@ body {
 }
 
 .dark .nextra-card {
-  background: #221c17;
-  border-color: #332b23;
+  background: #201b18;
+  border-color: #2e2824;
 }
 
 .dark .nextra-card:hover {
@@ -1409,9 +1435,9 @@ body {
 }
 
 .dark .nextra-content code {
-  background: #221c17;
+  background: #201b18;
 }
 
 .dark .nextra-content hr {
-  border-color: #332b23;
+  border-color: #2e2824;
 }

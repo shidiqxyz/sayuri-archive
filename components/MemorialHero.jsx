@@ -22,7 +22,7 @@ export default function MemorialHero() {
         <p className="mem-hero__dates">1996 — 2024</p>
 
         <div className="mem-hero__cta">
-          <a className="mem-hero__link" href="/archive">
+          <a className="mem-hero__link" href="#archive">
             Browse the archive
           </a>
         </div>
